@@ -1,0 +1,15 @@
+{
+  "name": "ACSDemo",
+  "version": "1.0.0",
+  "description": "Simple client front-end app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+    "express":"*",
+    "body-parser":"*"
+  },
+  "author": "Dan Neumann",
+  "license": "MIT"
+}
