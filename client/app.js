@@ -1,7 +1,7 @@
 /**
  * Created by daniel.neumann on 6/7/16.
  */
-var myApp = angular.module('myApp',['ngRoute']);
+var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm']);
 
 myApp.config(function($routeProvider){
     $routeProvider.when('/', {

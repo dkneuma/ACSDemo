@@ -1,11 +1,10 @@
 /**
  * Created by daniel.neumann on 6/7/16.
  */
-var myApp = angular.module('myApp');
+//var myApp = angular.module('myApp');
 var url = 'https://challenge.acstechnologies.com/api/contact/';
-var urlTEST = 'https://challenge.acstechnologies.com/api/contact/4931/';
 
-myApp.controller('ContactsController', ['$scope', '$http', '$location', '$window', '$routeParams', function($scope, $http, $location, $window,  $routeParams){
+myApp.controller('ContactsController', ['$scope', '$confirm', '$http', '$location', '$window', '$routeParams', function($scope, $confirm, $http, $location, $window,  $routeParams){
     console.log('ContactsController loaded...');
 
     var refresh = function () {
@@ -17,16 +16,14 @@ myApp.controller('ContactsController', ['$scope', '$http', '$location', '$window
 
     refresh();
 
-
-    $scope.showConfirmBox = function(id) {
-        if ($window.confirm("Do you want to continue?")) {
-           console.log("Go ahead and delete ID " + id);
-            $scope.deleteContact(id);
-        }
-        else {
-            console.log("DO NOT DELETE!");
-        }
+    $scope.deleteConfirm = function(id) {
+        $confirm({text: 'HEY? Are you sure you want to delete?'})
+            .then(function() {
+                console.log("Go ahead and delete ID " + id);
+                $scope.deleteContact(id);
+            });
     }
+    
 
     $scope.getContacts = function() {
         $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
@@ -106,7 +103,7 @@ myApp.controller('ContactsController', ['$scope', '$http', '$location', '$window
 
                 console.log("DELETE Successfull:");
                 console.log(response);
-               refresh();
+                $location.path('/#');
 
             }, function errorCallback(response) {
                 console.log("DELETE FAILED!!:");

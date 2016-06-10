@@ -19,28 +19,9 @@
         <td><a ng-href="#/contacts/edit/{{contact.id}}">{{contact.first_name}} {{contact.last_name}}</a></td>
         <td>{{contact.company_name}}</td>
         <td>{{contact.city}}<span
-                ng-if="(contact.city.length > 0) && (contact.state.length > 0) ">
-            , </span>{{contact.state}}</td>
+                ng-if="(contact.city.length > 0) && (contact.state.length > 0) ">, </span>{{contact.state}}</td>
         <td>{{contact.email}}</td>
-        <td><button class="btn btn-danger" ng-click="showConfirmBox(contact.id)">DELETE</button></td>
+        <td><button class="btn btn-danger" ng-click="deleteConfirm(contact.id)">DELETE</button></td>
     </tr>
     </tbody>
 </table>
-<!--
-
-
-    first_name": "someValue",
-    "last_name": "someValue",
-    "company_name": "someValue",
-    "address": "someValue",
-    "city": "someValue",
-    "state": "someValue",
-    "zip": "12345",
-    "phone": "8034562345",
-    "work_phone": "8034562345",
-    "email": "someValue",
-    "url": "someValue",
-    "created_at": dateTime,
-    "updated_at": dateTime
-
-    -->

@@ -6,6 +6,7 @@
     <div class="panel-body">
         <form name="editForm" novalidate>
             <div class="customerEdit">
+
                 <div class="row">
                     <div class="col-md-2">
                         First Name:
@@ -91,7 +92,7 @@
                         Zip:
                     </div>
                     <div class="col-md-10">
-                        <input type="number" name="zip" class="form-control" data-ng-model="contact.zip"  />
+                        <input type="text" name="zip" class="form-control" data-ng-model="contact.zip"  />
 
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                          Save
                         </button>
                         &nbsp;&nbsp;
-                        <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteContact(contact.id)">Delete</button>
+                        <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteConfirm(contact.id)">Delete</button>
                     </div>
                 </div>
                 <br />
