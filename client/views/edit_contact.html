@@ -7,12 +7,6 @@
         <form name="editForm" novalidate>
             <div class="customerEdit">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h4>{{ contact.first_name + ' ' + contact.last_name }}</h4>
-                        <br />
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-2">
                         First Name:
                     </div>
@@ -31,6 +25,16 @@
                     <div class="col-md-10">
                         <input type="text" name="lastName" class="form-control" data-ng-model="contact.last_name" />
 
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Company:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="company" class="form-control" data-ng-model="contact.company_name" />
                     </div>
                 </div>
 

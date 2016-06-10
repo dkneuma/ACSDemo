@@ -12,10 +12,6 @@ myApp.config(function($routeProvider){
             controller:'ContactsController',
             templateUrl: 'views/contacts.html'
         })
-        .when('/contacts/details/:id',{
-            controller:'ContactsController',
-            templateUrl: 'views/contact_details.html'
-        })
         .when('/contacts/add',{
             controller:'ContactsController',
             templateUrl: 'views/edit_contact.html'
