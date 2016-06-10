@@ -1,19 +1,30 @@
-<div class="panel panel-default" ng-init="getContacts()">
-    <div class="panel-heading">
-        <h3 class="panel-title">Contacts</h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div ng-repeat="contact in contacts">
-                <div class="col-md-6">
-                    <div class="col-md-6">
-                        <h4>{{contact.first_name}}</h4>
-                        <p>{{contact.last_name}}</p>
-                        <a class="btn btn-primary" href="#/contacts/details/{{contact.id}}">View Details</a>
-                    </div>
+<form class="form-inline">
+    <input ng-model="query" type="text"
+           placeholder="Filter by" autofocus>
+</form>
+<table class="table" ng-init="getContacts()">
+    <thead>
+    <tr>
+        <th><a href="" ng-click="predicate = 'first_name'; reverse=false">First Name</a></th>
+        <th><a href="" ng-click="predicate = 'last_name'; reverse=false">Last Name</a></th>
+        <th>Company Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <tr data-ng-repeat="contact in  contacts | filter:query | orderBy:predicate:reverse">
+        <td>{{contact.first_name}}</td>
+        <td>{{contact.last_name}}</td>
+        <td>{{contact.city}}</td>
+        <td>{{contact.state}}</td>
+        <td>{{contact.zip}}</td>
+        <td>{{contact.email}}</td>
+        <td><button class="btn btn-danger" ng-click="deleteContact(contact.id)">DELETE</button></td>
+        <td><a class="btn btn-default" ng-href="#/contacts/edit/{{contact.id}}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>

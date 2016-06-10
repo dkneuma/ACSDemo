@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>ACS Database</title>
+</head>
+<body>
+<div class="container" ng-init="getContacts()">
+    <h1>AGS Database</h1>
+    <form class="form-inline">
+        <input ng-model="query" type="text"
+               placeholder="Filter by" autofocus>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><a href="" ng-click="predicate = 'first_name'; reverse=false">First Name</a></th>
+            <th><a href="" ng-click="predicate = 'last_name'; reverse=false">Last Name</a></th>
+            <th>Commentary</th>
+            <th>Access count</th>
+            <th>Read count</th>
+            <th>Action</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr data-ng-repeat="contact in contacts">
+            <td>{{contact.first_name}}</td>
+            <td>{{contact.last_name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-danger" ng-click="remove(contact.id)">Remove</button></td>
+            <td><button class="btn btn-warning" ng-click="edit(contactid)">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/app.js"></script>
+<script src="/controllers/contacts.js"></script>
+</body>
+</html>

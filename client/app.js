@@ -18,7 +18,7 @@ myApp.config(function($routeProvider){
         })
         .when('/contacts/add',{
             controller:'ContactsController',
-            templateUrl: 'views/add_contact.html'
+            templateUrl: 'views/edit_contact.html'
         })
         .when('/contacts/edit/:id',{
             controller:'ContactsController',

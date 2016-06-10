@@ -1,10 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<a href="#/contacts">Go Back</a>
+<div class="panel panel-default" ng-init="getContact()">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{contact.first_name}} {{contact.last_name}}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="editForm" novalidate>
+            <div class="customerEdit">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>{{ contact.first_name + ' ' + contact.last_name }}</h4>
+                        <br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        First Name:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="firstName" class="form-control" data-ng-model="contact.first_name" required />
+                        <span class="errorMessage" ng-show="editForm.firstName.$touched && editForm.firstName.$invalid">
+                            First name is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Last Name:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="lastName" class="form-control" data-ng-model="contact.last_name" />
 
-</body>
-</html>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Email:
+                    </div>
+                    <div class="col-md-10">
+                        <!-- allowInvalid added below so that the model isn't wiped
+                        out (the default behavior) if email is determined to be invalid due to being a duplicate-->
+                        <input type="text" name="email"
+                               class="form-control"
+                               data-ng-model="contact.email"
+                               data-ng-minlength="3"
+                                />
+                        <!-- Show error if touched and unique is in error -->
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Address:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="address" class="form-control" data-ng-model="contact.address"  />
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        City:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="city" class="form-control" data-ng-model="contact.city"  />
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        State:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="city" class="form-control" data-ng-model="contact.state"  />
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Zip:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="number" name="zip" class="form-control" data-ng-model="contact.zip"  />
+
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" data-ng-click="saveContact(contact)" data-ng-disabled="editForm.$invalid || !editForm.$dirty">
+                         Save
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteContact(contact.id)">Delete</button>
+                    </div>
+                </div>
+                <br />
+</div>
+
+</form>

@@ -15,7 +15,10 @@
                     <li class="list-group-item">"address"</li>
                     <li class="list-group-item">"city"</li>
                     <li class="list-group-item">"state"</li>
-                    <li class="list-group-item">"zip"</li>
+                    <li class="list-group-item">"zip: "<input type="number" name="zip" class="form-control" width="20px" data-ng-model="contact.zip" required />
+                        <span class="errorMessage" ng-show="editForm.zip.$touched && editForm.zip.$invalid">
+                            Zip is required
+                        </span></li>
                     <li class="list-group-item">"phone"</li>
                     <li class="list-group-item">"work_phone"</li>
                     <li class="list-group-item">"email"</li>
