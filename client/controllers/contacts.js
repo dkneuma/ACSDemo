@@ -4,7 +4,7 @@
 //var myApp = angular.module('myApp');
 var url = 'https://challenge.acstechnologies.com/api/contact/';
 
-myApp.controller('ContactsController', ['$scope', '$confirm', '$http', '$location', '$window', '$routeParams', function($scope, $confirm, $http, $location, $window,  $routeParams){
+myApp.controller('ContactsController', ['$scope', '$confirm', '$http', '$location', '$routeParams', function($scope, $confirm, $http, $location, $routeParams){
     console.log('ContactsController loaded...');
 
     var refresh = function () {
