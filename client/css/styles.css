@@ -1,1 +1,6 @@
-img{width:100%;}
+a.unlink {
+    color: inherit;
+}
+a.unlink:hover {
+    color: inherit;
+}

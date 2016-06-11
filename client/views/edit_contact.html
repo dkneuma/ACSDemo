@@ -1,112 +1,72 @@
 <a href="#/contacts">Go Back</a>
-<div class="panel panel-default" ng-init="getContact()">
+<div class="panel panel-primary" ng-init="getContact()">
     <div class="panel-heading">
         <h3 class="panel-title">{{contact.first_name}} {{contact.last_name}}</h3>
     </div>
     <div class="panel-body">
-        <form name="editForm" novalidate>
-            <div class="customerEdit">
-
-                <div class="row">
-                    <div class="col-md-2">
-                        First Name:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="firstName" class="form-control" data-ng-model="contact.first_name" required />
-                        <span class="errorMessage" ng-show="editForm.firstName.$touched && editForm.firstName.$invalid">
+        <form name="editForm" class="form-horizontal" novalidate>
+         <div class="form-group">
+            <label for="inputFirstName" class="control-label col-xs-2">First Name:</label>
+            <div class="col-xs-10">
+                <input type="text" name="firstName" class="form-control" id="inputFirstName" placeholder="First Name" data-ng-model="contact.first_name" required>
+                    <span class="errorMessage" ng-show="editForm.firstName.$touched && editForm.firstName.$invalid">
                             First name is required
-                        </span>
-                    </div>
+                    </span>
+            </div>
+            </div>
+         <div class="form-group">
+            <label for="inputLastName" class="control-label col-xs-2">Last Name:</label>
+             <div class="col-xs-10">
+               <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" data-ng-model="contact.last_name">
+             </div>
+         </div>
+            <div class="form-group">
+                <label for="inputCompany" class="control-label col-xs-2">Company:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputCompany" placeholder="Company" data-ng-model="contact.company_name">
                 </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Last Name:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="lastName" class="form-control" data-ng-model="contact.last_name" />
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="control-label col-xs-2">Email:</label>
+                <div class="col-xs-10">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Last Name" data-ng-model="contact.email" data-ng-minlength="3">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress" class="control-label col-xs-2">Address:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" data-ng-model="contact.address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCity" class="control-label col-xs-2">City:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputCity" placeholder="City" data-ng-model="contact.city">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputState" class="control-label col-xs-2">State:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputState" placeholder="State" data-ng-model="contact.state">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputZip" class="control-label col-xs-2">Zip:</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="inputZip" placeholder="Zip Code" data-ng-model="contact.zip">
+                </div>
+            </div>
 
-                    </div>
-                </div>
-
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Company:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="company" class="form-control" data-ng-model="contact.company_name" />
-                    </div>
-                </div>
-
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Email:
-                    </div>
-                    <div class="col-md-10">
-                        <!-- allowInvalid added below so that the model isn't wiped
-                        out (the default behavior) if email is determined to be invalid due to being a duplicate-->
-                        <input type="text" name="email"
-                               class="form-control"
-                               data-ng-model="contact.email"
-                               data-ng-minlength="3"
-                                />
-                        <!-- Show error if touched and unique is in error -->
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Address:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="address" class="form-control" data-ng-model="contact.address"  />
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        City:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="city" class="form-control" data-ng-model="contact.city"  />
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        State:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="city" class="form-control" data-ng-model="contact.state"  />
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-2">
-                        Zip:
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" name="zip" class="form-control" data-ng-model="contact.zip"  />
-
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary" data-ng-click="saveContact(contact)" data-ng-disabled="editForm.$invalid || !editForm.$dirty">
-                         Save
-                        </button>
-                        &nbsp;&nbsp;
-                        <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteConfirm(contact.id)">Delete</button>
-                    </div>
-                </div>
-                <br />
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-left">
+            <button type="submit" class="btn btn-primary" data-ng-click="saveContact(contact)" data-ng-disabled="editForm.$invalid || !editForm.$dirty">
+                Save
+            </button>
+            &nbsp;&nbsp;
+            <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteConfirm(contact.id)">Delete</button>
+        </div>
+    </div>
 </div>
-
-</form>
+<a href="#/contacts">Go Back</a>
