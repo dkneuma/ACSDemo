@@ -27,7 +27,7 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
         });
 })
 
-.controller('ContactsController', function($scope, $confirm, $http, $location){
+.controller('ContactsController', function($scope, $confirm, $http, $location, $routeParams){
     console.log('ContactsController loaded...');
 
     $scope.deleteConfirm = function(id) {
