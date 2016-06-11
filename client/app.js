@@ -27,7 +27,7 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
         });
 })
 
-.controller('ContactsController', ['$scope', '$confirm', '$http', '$location', '$routeParams', function($scope, $confirm, $http, $location, $routeParams){
+.controller('ContactsController', function($scope, $confirm, $http, $location){
     console.log('ContactsController loaded...');
 
     $scope.deleteConfirm = function(id) {
@@ -37,15 +37,6 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
                 $scope.deleteContact(id);
             });
     }
-
-    /*
-    $scope.getContacts = function() {
-        $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
-            .success(function (response) {
-                $scope.contacts = response.data;
-            })
-    }
-    */
 
     $scope.getContacts = function() {
         $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
@@ -57,7 +48,6 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
                 console.log("Error:" + response);
             })
     }
-
 
     $scope.getContact = function() {
         var id = $routeParams.id;
@@ -124,7 +114,7 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
             headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
             .then(function successCallback(response) {
 
-                console.log("DELETE Successfull:");
+                console.log("DELETE Successful:");
                 console.log(response);
                 $location.path('/#');
 
@@ -137,4 +127,5 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
     }
 
 
-}]);
+});
+
