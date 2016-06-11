@@ -30,15 +30,6 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
 .controller('ContactsController', ['$scope', '$confirm', '$http', '$location', '$routeParams', function($scope, $confirm, $http, $location, $routeParams){
     console.log('ContactsController loaded...');
 
-    var refresh = function () {
-        $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
-            .success(function(response){
-                $scope.contacts = response.data;
-            });
-    };
-
-    refresh();
-
     $scope.deleteConfirm = function(id) {
         $confirm({text: 'HEY? Are you sure you want to delete?'})
             .then(function() {
@@ -47,13 +38,26 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
             });
     }
 
+    /*
+    $scope.getContacts = function() {
+        $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
+            .success(function (response) {
+                $scope.contacts = response.data;
+            })
+    }
+    */
 
     $scope.getContacts = function() {
         $http({method: 'GET', url:url, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
-            .success(function(response){
-                $scope.contacts = response.data;
-            });
+            .then(function successCallback(response) {
+                console.log("GET Successful:");
+                $scope.contacts = response.data.data;
+            }, function errorCallback(response) {
+                console.log("GET FAILED!!:");
+                console.log("Error:" + response);
+            })
     }
+
 
     $scope.getContact = function() {
         var id = $routeParams.id;
