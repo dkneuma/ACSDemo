@@ -33,7 +33,7 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
 .controller('navController', function ($scope) {
         $scope.nav = {
             navItems: ['Home', 'Add', 'About'],
-            selectedIndex: 2,
+            selectedIndex: 0,
             navClick: function ($index) {
                 $scope.nav.selectedIndex = $index;
             }
