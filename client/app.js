@@ -18,6 +18,10 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
             controller:'ContactsController',
             templateUrl: 'views/edit_contact.html'
         })
+        .when('/About', {
+            controller:'AboutController',
+            templateUrl: 'views/about.html'
+        })
         .when('/contacts/edit/:id',{
             controller:'ContactsController',
             templateUrl: 'views/edit_contact.html'
@@ -28,13 +32,18 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
 })
 .controller('navController', function ($scope) {
         $scope.nav = {
-            navItems: ['Home', 'Add'],
-            selectedIndex: 0,
+            navItems: ['Home', 'Add', 'About'],
+            selectedIndex: 2,
             navClick: function ($index) {
                 $scope.nav.selectedIndex = $index;
             }
         };
     })
+
+.controller('AboutController', function($scope){
+    console.log('AboutController loaded...');
+})
+
 .controller('ContactsController', function($scope, $confirm, $http, $location, $routeParams){
     console.log('ContactsController loaded...');
 
