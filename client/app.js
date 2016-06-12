@@ -31,7 +31,7 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
         });
 })
 
-    .factory('dataFactory', ['$http', '$confirm', function($http, $confirm) {
+    .factory('dataFactory', ['$http', function($http) {
 
         var urlBase = 'https://challenge.acstechnologies.com/api/contact/';
         var headerObject = {headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}};
