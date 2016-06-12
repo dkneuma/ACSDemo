@@ -10,11 +10,11 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
         controller:'ContactsController',
         templateUrl: 'views/contacts.html'
     })
-        .when('/contacts', {
+        .when('/home', {
             controller:'ContactsController',
             templateUrl: 'views/contacts.html'
         })
-        .when('/contacts/add',{
+        .when('/Add',{
             controller:'ContactsController',
             templateUrl: 'views/edit_contact.html'
         })
@@ -26,7 +26,15 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
             redirectTo: '/'
         });
 })
-
+.controller('navController', function ($scope) {
+        $scope.nav = {
+            navItems: ['Home', 'Add'],
+            selectedIndex: 0,
+            navClick: function ($index) {
+                $scope.nav.selectedIndex = $index;
+            }
+        };
+    })
 .controller('ContactsController', function($scope, $confirm, $http, $location, $routeParams){
     console.log('ContactsController loaded...');
 
@@ -54,9 +62,14 @@ var myApp = angular.module('myApp',['ngRoute','ui.bootstrap','angular-confirm'])
         if (id) {
             console.log("getting ID = " + id);
             $http({method: 'GET', url: url + id, headers: {'X-Auth-Token': '614rfnFSypmCjYeOvTJ6yhWAWpaLqqYkt8uw5yCp'}})
-                .success(function (response) {
-                    $scope.contact = response;
-                });
+                .then(function successCallback(response) {
+                    console.log("GET Successful:");
+                    console.log(response.status);
+                    $scope.contact = response.data;
+                }, function errorCallback(response) {
+                    console.log("GET FAILED!!:");
+                    console.log("Error:" + response);
+                })
         }
     }
 
