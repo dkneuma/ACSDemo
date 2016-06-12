@@ -6,9 +6,10 @@
     <thead>
     <tr>
         <th><a href="" ng-click="predicate = 'last_name'; reverse=false">Name</a></th>
-        <th><a href="" ng-click="predicate = 'company_name'; reverse=false">Company Name</a></th>
+        <th><a href="" ng-click="predicate = 'company_name'; reverse=false">Company</a></th>
         <th><a href="" ng-click="predicate = 'city'; reverse=false">Location</a></th>
         <th><a href="" ng-click="predicate = 'email'; reverse=false">Email</a></th>
+        <th>Phone</th>
         <th></th>
 
     </tr>
@@ -21,7 +22,10 @@
         <td>{{contact.city}}<span
                 ng-if="(contact.city.length > 0) && (contact.state.length > 0) ">, </span>{{contact.state}}</td>
         <td>{{contact.email}}</td>
-        <td><button class="btn btn-danger" ng-click="deleteConfirm(contact.id)">DELETE</button></td>
+        <td>{{contact.phone}}</td>
+        <td><button class="btn btn-danger" ng-click="deleteConfirm(contact.id)">
+            <span class="glyphicon glyphicon-remove"></span> <span>  Delete</span>
+        </button></td>
     </tr>
     </tbody>
 </table>

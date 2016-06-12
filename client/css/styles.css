@@ -1,6 +1,19 @@
-a.unlink {
-    color: inherit;
+thead {
+    background-color:#337ab7;
+    color:#FFF;
 }
-a.unlink:hover {
-    color: inherit;
+thead a {
+    color:#FFF;
+    font-weight:normal;
+    text-decoration: underline;
+}
+thead a:hover
+{
+    color:#FFF;
+    font-weight:bold;
+}
+thead a:visited
+{
+    color:#FFF;
+    font-weight:normal;
 }
