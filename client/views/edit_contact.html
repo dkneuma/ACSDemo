@@ -1,6 +1,9 @@
 <div class="panel panel-primary" ng-init="getContact()">
     <div class="panel-heading">
-        <h3 class="panel-title">{{contact.first_name}} {{contact.last_name}}</h3>
+        <h3 class="panel-title">
+            <span ng-show="editForm.$invalid || !editForm.$dirty">Viewing: </span>
+            <span ng-show="!editForm.$invalid && editForm.$dirty">Editing: </span>
+            {{contact.first_name}} {{contact.last_name}}</h3>
     </div>
     <div class="panel-body">
         <form name="editForm" class="form-horizontal" novalidate>
