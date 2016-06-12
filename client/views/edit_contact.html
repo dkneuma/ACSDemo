@@ -1,4 +1,4 @@
-<div class="panel panel-primary" ng-init="getContact()">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">
             <span ng-show="editForm.$invalid || !editForm.$dirty">Viewing: </span>
@@ -93,6 +93,9 @@
             <button class="btn btn-danger" data-ng-if="contact.id > 0" data-ng-click="deleteConfirm(contact.id)">
                 <span class="glyphicon glyphicon-remove"></span> <span>  Delete</span>
             </button>
+        </div>
+        <div class="pull-right">
+            <span>{{status}}</span>
         </div>
     </div>
 </div>
